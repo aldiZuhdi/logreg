@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AldiZuhdi</title>
+  </head>
+  <body>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+      * {
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        font-size: 16px;
+      }
+      body,
+      html {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        scroll-behavior: smooth;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .navigation {
+        width: 300px;
+        margin-bottom: 5px;
+        display: flex;
+        gap: 0px 5px;
+      }
+
+      a {
+        width: 50%;
+        text-align: center;
+        text-decoration: none;
+        padding: 5px 0px;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease-in-out;
+        color: rgb(78, 78, 78);
+      }
+      a:hover {
+        background-color: rgb(0, 155, 26, 0.3);
+      }
+      a.active {
+        background-color: rgb(0, 155, 26);
+        color: white;
+      }
+
+      .container {
+        width: 300px;
+        height: auto;
+        overflow: hidden;
+        display: flex;
+      }
+
+      .cardContainer {
+        width: 300px;
+        height: auto;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+        background-color: rgb(0, 155, 26);
+        color: white;
+      }
+      .cardTitle {
+        text-align: center;
+        font-size: 30px;
+        font-weight: 800;
+      }
+      .input {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      label {
+        font-weight: 300;
+        padding-left: 10px;
+      }
+      .a {
+        width: 100%;
+        height: 30px;
+        outline: none;
+        border: none;
+        border-radius: 50px;
+        padding: 10px;
+        font-size: 14px;
+        color: rgb(78, 78, 78);
+        background: rgba(255, 255, 255, 0.5);
+      }
+
+      button {
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+        height: 45px;
+      }
+    </style>
+    <div class="navigation">
+      <a id="loginLink" href="#login" class="active" onclick="active('login')">Login</a>
+      <a id="registerLink" href="#register" onclick="active('register')">Register</a>
+    </div>
+    <div class="container">
+      <form action="https://aldizuhdi.github.io/profile" class="login" id="login" method="GET">
+        <div class="cardContainer">
+          <div class="cardTitle">Login</div>
+          <div class="input">
+            <label for="">Username</label>
+            <input type="text" name="username" id="loginUsername" class="a" autocomplete="off" required />
+          </div>
+          <div class="input">
+            <label for="">Password</label>
+            <input type="password" name="password" id="loginPassword" class="a password" autocomplete="off" required />
+          </div>
+          <div class="input"><input type="checkbox" name="checkbox" class="checkbox" id="loginShowPassword" onclick="showPassword()" /> Show Password</div>
+          <button type="submit">Login</button>
+        </div>
+      </form>
+      <form action="https://aldizuhdi.github.io/profile" class="register" id="register" method="POST">
+        <div class="cardContainer">
+          <div class="cardTitle">Register</div>
+          <div class="input">
+            <label for="">Email</label>
+            <input type="email" name="email" id="registerEmail" class="a" autocomplete="off" required />
+          </div>
+          <div class="input">
+            <label for="">Password</label>
+            <input type="password" name="password" id="registerPassword" class="a password" autocomplete="off" required />
+          </div>
+          <div class="input">
+            <label for="">Confirm Password</label>
+            <input type="password" name="password" id="registerConfirmPassword" class="a password" autocomplete="off" required />
+          </div>
+          <div class="input">
+            <label for="">Username</label>
+            <input type="text" name="text" id="registerUsername" class="a" autocomplete="off" required />
+          </div>
+          <div class="input"><input type="checkbox" name="checkbox" class="checkbox" id="registerShowPassword" onclick="showPassword()" /> Show Password</div>
+          <button type="submit">register</button>
+        </div>
+      </form>
+    </div>
+    <script>
+      // function untuk kelas aktive
+      function active(formType) {
+        // hapus kelas active terlebih dahulu
+        document.getElementById("loginLink").classList.remove("active");
+        document.getElementById("registerLink").classList.remove("active");
+
+        // Jika tag di klik maka akan menambahkan kelas active
+        if (formType === "login") {
+          document.getElementById("loginLink").classList.add("active");
+        } else if (formType === "register") {
+          document.getElementById("registerLink").classList.add("active");
+        }
+      }
+
+      const loginPassword = document.getElementById("loginPassword");
+      const loginShowPassword = document.getElementById("loginShowPassword");
+      const registerPassword = document.getElementById("registerPassword");
+      const registerConfirmPassword = document.getElementById("registerConfirmPassword");
+      const registerShowPassword = document.getElementById("registerShowPassword");
+      function showPassword() {
+        if (loginShowPassword.checked) {
+          loginPassword.type = "text";
+        } else {
+          loginPassword.type = "password";
+        }
+
+        if (registerShowPassword.checked) {
+          registerPassword.type = "text";
+          registerConfirmPassword.type = "text";
+        } else {
+          registerPassword.type = "password";
+          registerConfirmPassword.type = "password";
+        }
+      }
+    </script>
+  </body>
+</html>
