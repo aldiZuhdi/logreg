@@ -147,6 +147,8 @@
       </form>
     </div>
     <script>
+      form1 = document.getElementById("login");
+      form2 = document.getElementById("register");
       // function untuk kelas aktive
       function active(formType) {
         // hapus kelas active terlebih dahulu
@@ -156,8 +158,10 @@
         // Jika tag di klik maka akan menambahkan kelas active
         if (formType === "login") {
           document.getElementById("loginLink").classList.add("active");
+          form2.reset();
         } else if (formType === "register") {
           document.getElementById("registerLink").classList.add("active");
+          form1.reset();
         }
       }
 
